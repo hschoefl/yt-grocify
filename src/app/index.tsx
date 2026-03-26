@@ -23,10 +23,10 @@ export default function Index() {
         keyboardType="email-address"
         autoComplete="email"
         autoCorrect={false}
+        // style={{ backgroundColor: "red" }}
       />
 
-      {/* <TextInput placeholder="Password" style={styles.input} secureTextEntry /> */}
-      <CustomTextInput />
+      <CustomTextInput placeholder="Password" secureTextEntry />
 
       <Pressable
         onPress={() => {

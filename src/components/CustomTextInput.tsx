@@ -6,7 +6,7 @@ type CustomTextInputProps = {
 } & TextInputProps;
 
 const CustomTextInput = (props: CustomTextInputProps) => {
-  return <TextInput style={styles.input} {...props} />;
+  return <TextInput {...props} style={[styles.input, props.style]} />;
 };
 
 export default CustomTextInput;
