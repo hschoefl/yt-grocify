@@ -1,5 +1,6 @@
 import CustomButton from "@/components/CustomButton";
 import CustomTextInput from "@/components/CustomTextInput";
+import { useAuth } from "@/providers/AuthProvider";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "expo-router";
 import { useForm } from "react-hook-form";
@@ -28,11 +29,18 @@ export default function SignInScreen() {
     formState: { errors },
   } = useForm({
     resolver: zodResolver(signInSchema),
+    defaultValues: {
+      email: "test@test.com",
+      password: "password",
+    },
   });
+
+  const { signIn } = useAuth();
 
   // wenn wir onSignIn in handleSubmit wrappen, dann bekommen wir die Formulardaten als Argument (data) übergeben, wenn der Button gedrückt wird
   const onSignIn = (data: SignInFields) => {
     console.log("sign in with", data);
+    signIn();
   };
 
   return (
