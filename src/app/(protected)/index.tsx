@@ -5,8 +5,8 @@ import { StyleSheet, Text, View } from "react-native";
 
 const HomeScreen = () => {
   return (
-    <View>
-      <Text>HomeScreen</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>HomeScreen</Text>
       <Text>Only authenticated users can see this screen</Text>
     </View>
   );
@@ -14,4 +14,14 @@ const HomeScreen = () => {
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+});

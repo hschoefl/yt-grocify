@@ -4,6 +4,8 @@ import { Redirect, Slot } from "expo-router";
 // this layout is used for all routes that are protected, d.h. die nur angezeigt werden, wenn der User eingeloggt ist
 
 export default function ProtectedLayout() {
+  console.log("Protected Layout");
+
   const { isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {
