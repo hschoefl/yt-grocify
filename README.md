@@ -8,5 +8,6 @@
 - the closest layoutfile is first executed by expo router, even before index.tsx
 - status bar is handled by expo-router
 - Guarding: protecting group of screens
+- using Clerk for authentication (according to teacher best way of auth)
 
 Video: 1:03

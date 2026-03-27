@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import { z } from "zod";
 
+import { useSignUp } from "@clerk/expo";
+
 // define the schema for zod validation
 const signUpSchema = z.object({
   email: z.email("Please enter a valid email address!"),
@@ -30,9 +32,21 @@ export default function SignUpScreen() {
     resolver: zodResolver(signUpSchema),
   });
 
+  const { signUp } = useSignUp();
+
   // wenn wir onSignIn in handleSubmit wrappen, dann bekommen wir die Formulardaten als Argument (data) übergeben, wenn der Button gedrückt wird
-  const onSignUp = (data: SignUpFields) => {
-    console.log("sign up with", data);
+  const onSignUp = async (data: SignUpFields) => {
+    console.log(data);
+
+    const { error: signUpError } = await signUp.password({
+      emailAddress: data.email,
+      password: data.password,
+    });
+
+    if (signUpError) {
+      console.error("Sign up error:", signUpError);
+      return;
+    }
   };
 
   return (
@@ -59,6 +73,7 @@ export default function SignUpScreen() {
           name="password"
           placeholder="Password"
           secureTextEntry
+          autoCapitalize="none"
         />
       </View>
 

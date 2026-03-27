@@ -1,18 +1,23 @@
-import { useAuth } from "@/providers/AuthProvider";
+// import { useAuth } from "@/providers/AuthProvider";
+import { useAuth } from "@clerk/expo";
 import { Link } from "expo-router";
 import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 
 const WelcomeScreen = () => {
-  const { isAuthenticated, signOut } = useAuth();
+  const { isSignedIn, signOut } = useAuth();
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome Screen</Text>
 
-      <Text>Is Authenticated: {isAuthenticated ? "Yes" : "No"}</Text>
+      <Text>Is Authenticated: {isSignedIn ? "Yes" : "No"}</Text>
 
-      <Button title="Sign Out" onPress={signOut} disabled={!isAuthenticated} />
+      <Button
+        title="Sign Out"
+        onPress={() => signOut()}
+        disabled={!isSignedIn}
+      />
 
       <Link href="/(auth)/sign-in">
         <Text style={{ color: "blue", marginTop: 20 }}>Go to Sign In</Text>
