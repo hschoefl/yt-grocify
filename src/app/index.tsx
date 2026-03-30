@@ -9,7 +9,7 @@ const WelcomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome Screen</Text>
+      <Text className="text-xl font-bold">Welcome Screen</Text>
 
       <Text>Is Authenticated: {isSignedIn ? "Yes" : "No"}</Text>
 

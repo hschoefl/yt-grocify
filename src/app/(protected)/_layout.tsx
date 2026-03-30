@@ -1,6 +1,6 @@
 // import { useAuth } from "@/providers/AuthProvider";
 import { useAuth } from "@clerk/expo";
-import { Redirect, Slot } from "expo-router";
+import { Redirect, Stack } from "expo-router";
 
 // this layout is used for all routes that are protected, d.h. die nur angezeigt werden, wenn der User eingeloggt ist
 
@@ -14,5 +14,5 @@ export default function ProtectedLayout() {
     return <Redirect href="/(auth)/sign-in" />;
   }
 
-  return <Slot />;
+  return <Stack screenOptions={{ headerShown: false }} />;
 }

@@ -1,5 +1,6 @@
 import { tokenCache } from "@clerk/expo/token-cache";
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
+import "../../global.css";
 
 import { ClerkProvider } from "@clerk/expo";
 
@@ -14,7 +15,7 @@ export default function RootLayout() {
   return (
     // <AuthProvider>
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-      <Slot />
+      <Stack screenOptions={{ headerShown: false }} />
     </ClerkProvider>
     // </AuthProvider>
   );
