@@ -2,7 +2,7 @@ import CustomButton from "@/components/CustomButton";
 import CustomTextInput from "@/components/CustomTextInput";
 import { useSignIn } from "@clerk/expo";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "expo-router";
+import { Href, Link, router } from "expo-router";
 import { useForm } from "react-hook-form";
 import {
   KeyboardAvoidingView,
@@ -12,6 +12,9 @@ import {
   View,
 } from "react-native";
 import { z } from "zod";
+
+const EMAIL = process.env.EXPO_PUBLIC_EMAIL || "";
+const PASSWORD = process.env.EXPO_PUBLIC_PASSWORD || "";
 
 // define the schema for zod validation
 const signInSchema = z.object({
@@ -30,8 +33,8 @@ export default function SignInScreen() {
   } = useForm({
     resolver: zodResolver(signInSchema),
     defaultValues: {
-      email: "test@test.com",
-      password: "password",
+      email: EMAIL,
+      password: PASSWORD,
     },
   });
 
@@ -49,8 +52,32 @@ export default function SignInScreen() {
     });
 
     if (signInError) {
-      console.error("Sign in error:", signInError?.message);
+      // console.error("Sign in error:", signInError?.message);
+      console.log("Sign in error", signInError);
       return;
+    }
+
+    if (signIn.status === "complete") {
+      console.log("Sign in successful!");
+      await signIn.finalize({
+        navigate: ({ session, decorateUrl }) => {
+          if (session?.currentTask) {
+            // Handle pending session tasks
+            // See https://clerk.com/docs/guides/development/custom-flows/authentication/session-tasks
+            console.log(session?.currentTask);
+            return;
+          }
+
+          const url = decorateUrl("/");
+          if (url.startsWith("http")) {
+            window.location.href = url;
+          } else {
+            router.push(url as Href);
+          }
+        },
+      });
+    } else {
+      console.log("Sign in failed:", signIn.status);
     }
   };
 
