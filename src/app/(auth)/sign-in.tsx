@@ -2,7 +2,7 @@ import CustomButton from "@/components/CustomButton";
 import CustomTextInput from "@/components/CustomTextInput";
 import { useAuth } from "@/providers/AuthProvider";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Href, Link, router } from "expo-router";
+import { Link } from "expo-router";
 import { useForm } from "react-hook-form";
 import {
   KeyboardAvoidingView,
@@ -11,6 +11,7 @@ import {
   Text,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { z } from "zod";
 
 const EMAIL = process.env.EXPO_PUBLIC_EMAIL || "";
@@ -51,80 +52,51 @@ export default function SignInScreen() {
     //   password: data.password,
     // });
 
-<<<<<<< HEAD
-    if (signInError) {
-      // console.error("Sign in error:", signInError?.message);
-      console.log("Sign in error", signInError);
-      return;
-    }
-
-    if (signIn.status === "complete") {
-      console.log("Sign in successful!");
-      await signIn.finalize({
-        navigate: ({ session, decorateUrl }) => {
-          if (session?.currentTask) {
-            // Handle pending session tasks
-            // See https://clerk.com/docs/guides/development/custom-flows/authentication/session-tasks
-            console.log(session?.currentTask);
-            return;
-          }
-
-          const url = decorateUrl("/");
-          if (url.startsWith("http")) {
-            window.location.href = url;
-          } else {
-            router.push(url as Href);
-          }
-        },
-      });
-    } else {
-      console.log("Sign in failed:", signIn.status);
-    }
-=======
     // if (signInError) {
     //   console.error("Sign in error:", signInError?.message);
     //   return;
     // }
     signIn();
->>>>>>> 9c6053a (disable clerk and use fake auth)
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
-      <Text style={styles.title}>Sign in</Text>
+    <SafeAreaView className="flex-1 justify-center items-center bg-primary px-5 gap-2 bg-red-500">
+      <KeyboardAvoidingView
+        className="flex-1 justify-center items-center bg-primary px-5 gap-2"
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <Text className="text-2xl font-semibold">Sign in</Text>
 
-      <View style={styles.inputContainer}>
-        <CustomTextInput
-          control={control}
-          name="email"
-          placeholder="Email"
-          autoFocus
-          autoCapitalize="none"
-          keyboardType="email-address"
-          autoComplete="email"
-          autoCorrect={false}
-        />
+        <View style={styles.inputContainer}>
+          <CustomTextInput
+            control={control}
+            name="email"
+            placeholder="Email"
+            autoFocus
+            autoCapitalize="none"
+            keyboardType="email-address"
+            autoComplete="email"
+            autoCorrect={false}
+          />
 
-        <CustomTextInput
-          control={control}
-          name="password"
-          placeholder="Password"
-          secureTextEntry
-        />
-      </View>
+          <CustomTextInput
+            control={control}
+            name="password"
+            placeholder="Password"
+            secureTextEntry
+          />
+        </View>
 
-      {/* wir müssen unser onSignIn in handle Submit wrappen, weil handleSubmit die Formulardaten validiert */}
-      <CustomButton onPress={handleSubmit(onSignIn)} buttonText="Sign in" />
+        {/* wir müssen unser onSignIn in handle Submit wrappen, weil handleSubmit die Formulardaten validiert */}
+        <CustomButton onPress={handleSubmit(onSignIn)} buttonText="Sign in" />
 
-      <Link href="/(auth)/sign-up">
-        <Text style={{ color: "blue", marginTop: 20, textAlign: "center" }}>
-          Don't have an account? Sign up
-        </Text>
-      </Link>
-    </KeyboardAvoidingView>
+        <Link href="/(auth)/sign-up">
+          <Text style={{ color: "blue", marginTop: 20, textAlign: "center" }}>
+            Don't have an account? Sign up
+          </Text>
+        </Link>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 

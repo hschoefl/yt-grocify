@@ -1,12 +1,13 @@
-<<<<<<< HEAD
-import { tokenCache } from "@clerk/expo/token-cache";
 import { Stack } from "expo-router";
 import "../../global.css";
-=======
-import { Slot } from "expo-router";
->>>>>>> 9c6053a (disable clerk and use fake auth)
 
 import { AuthProvider } from "@/providers/AuthProvider";
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from "@react-navigation/native";
+import { useColorScheme } from "react-native";
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
@@ -15,18 +16,14 @@ if (!publishableKey) {
 }
 
 export default function RootLayout() {
+  const colorScheme = useColorScheme();
+
   console.log("Root Layout");
   return (
-<<<<<<< HEAD
-    // <AuthProvider>
-    <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-      <Stack screenOptions={{ headerShown: false }} />
-    </ClerkProvider>
-    // </AuthProvider>
-=======
     <AuthProvider>
-      <Slot />
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <Stack screenOptions={{ headerShown: false }} />
+      </ThemeProvider>
     </AuthProvider>
->>>>>>> 9c6053a (disable clerk and use fake auth)
   );
 }

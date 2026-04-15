@@ -9,5 +9,6 @@
 - status bar is handled by expo-router
 - Guarding: protecting group of screens
 - using Clerk for authentication (according to teacher best way of auth)
+- expo-dev-client: da muss man nicht immer die App rebuilden, wenn man ein neues Package installiert
 
-Video: 1:03
+Video: 1:18

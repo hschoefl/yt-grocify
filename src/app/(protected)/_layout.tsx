@@ -1,6 +1,6 @@
 import { useAuth } from "@/providers/AuthProvider";
 // import { useAuth } from "@clerk/expo";
-import { Redirect } from "expo-router";
+import { Redirect, Stack } from "expo-router";
 
 // this layout is used for all routes that are protected, d.h. die nur angezeigt werden, wenn der User eingeloggt ist
 
