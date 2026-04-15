@@ -1,6 +1,6 @@
 import CustomButton from "@/components/CustomButton";
 import CustomTextInput from "@/components/CustomTextInput";
-import { useSignIn } from "@clerk/expo";
+import { useAuth } from "@/providers/AuthProvider";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Href, Link, router } from "expo-router";
 import { useForm } from "react-hook-form";
@@ -38,19 +38,20 @@ export default function SignInScreen() {
     },
   });
 
-  const { signIn } = useSignIn();
+  // const { signIn } = useSignIn();
 
-  // const { signIn } = useAuth();
+  const { signIn } = useAuth();
 
   // wenn wir onSignIn in handleSubmit wrappen, dann bekommen wir die Formulardaten als Argument (data) übergeben, wenn der Button gedrückt wird
-  const onSignIn = async (data: SignInFields) => {
+  const onSignIn = (data: SignInFields) => {
     console.log("sign in with", data);
 
-    const { error: signInError } = await signIn.password({
-      identifier: data.email,
-      password: data.password,
-    });
+    // const { error: signInError } = await signIn.password({
+    //   identifier: data.email,
+    //   password: data.password,
+    // });
 
+<<<<<<< HEAD
     if (signInError) {
       // console.error("Sign in error:", signInError?.message);
       console.log("Sign in error", signInError);
@@ -79,6 +80,13 @@ export default function SignInScreen() {
     } else {
       console.log("Sign in failed:", signIn.status);
     }
+=======
+    // if (signInError) {
+    //   console.error("Sign in error:", signInError?.message);
+    //   return;
+    // }
+    signIn();
+>>>>>>> 9c6053a (disable clerk and use fake auth)
   };
 
   return (

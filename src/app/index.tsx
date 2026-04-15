@@ -1,11 +1,11 @@
-// import { useAuth } from "@/providers/AuthProvider";
-import { useAuth } from "@clerk/expo";
+import { useAuth } from "@/providers/AuthProvider";
+// import { useAuth } from "@clerk/expo";
 import { Link } from "expo-router";
 import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 
 const WelcomeScreen = () => {
-  const { isSignedIn, signOut } = useAuth();
+  const { isAuthenticated: isSignedIn, signOut } = useAuth();
 
   return (
     <View style={styles.container}>

@@ -1,10 +1,10 @@
-// import { useAuth } from "@/providers/AuthProvider";
-import { useAuth } from "@clerk/expo";
+import { useAuth } from "@/providers/AuthProvider";
+// import { useAuth } from "@clerk/expo";
 import { Redirect, Stack } from "expo-router";
 
 export default function AuthLayout() {
   console.log("Auth Layout");
-  const { isSignedIn } = useAuth();
+  const { isAuthenticated: isSignedIn } = useAuth();
 
   if (isSignedIn) {
     return <Redirect href="/" />;
