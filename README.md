@@ -11,4 +11,5 @@
 - using Clerk for authentication (according to teacher best way of auth)
 - expo-dev-client: da muss man nicht immer die App rebuilden, wenn man ein neues Package installiert
 
-Video: 1:18
+Video: 1:43
+Link: https://www.youtube.com/watch?v=TuwcMlYAJlA

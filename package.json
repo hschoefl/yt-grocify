@@ -13,10 +13,12 @@
   "dependencies": {
     "@clerk/expo": "^3.1.5",
     "@hookform/resolvers": "^5.2.2",
+    "@neondatabase/serverless": "^1.0.2",
     "@react-navigation/bottom-tabs": "^7.15.5",
     "@react-navigation/elements": "^2.9.10",
     "@react-navigation/native": "^7.1.33",
     "babel-preset-expo": "^55.0.17",
+    "drizzle-orm": "^0.45.2",
     "expo": "~55.0.9",
     "expo-constants": "~55.0.9",
     "expo-dev-client": "~55.0.27",
@@ -49,6 +51,7 @@
   },
   "devDependencies": {
     "@types/react": "~19.2.2",
+    "drizzle-kit": "^0.31.10",
     "typescript": "~5.9.2"
   },
   "private": true
