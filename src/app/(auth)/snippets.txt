@@ -1,0 +1,34 @@
+/*
+<Text className="text-2xl font-semibold mb-3 text-center">Sign in</Text>
+
+        <View style={styles.inputContainer}>
+          <CustomTextInput
+            control={control}
+            name="email"
+            placeholder="Email"
+            autoFocus
+            autoCapitalize="none"
+            keyboardType="email-address"
+            autoComplete="email"
+            autoCorrect={false}
+          />
+
+          <CustomTextInput
+            control={control}
+            name="password"
+            placeholder="Password"
+            secureTextEntry
+          />
+        </View>
+
+        {/* wir müssen unser onSignIn in handle Submit wrappen, weil handleSubmit die Formulardaten validiert */}
+        <CustomButton onPress={handleSubmit(onSignIn)} buttonText="Sign in" />
+
+        <Link href="/(auth)/sign-up">
+          <Text style={{ color: "blue", marginTop: 20, textAlign: "center" }}>
+            Don't have an account? Sign up
+          </Text>
+        </Link>
+      </View>
+
+      */

@@ -3,7 +3,7 @@ module.exports = {
   // NOTE: Update this to include the paths to all files that contain Nativewind classes.
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   presets: [require("nativewind/preset")],
-  darkMode: "media", // this tells tailwind to use the user's system preferences
+  darkMode: "media", // this tells Tailwind/NativeWind to follow the device color scheme.
   theme: {
     extend: {
       colors: {
