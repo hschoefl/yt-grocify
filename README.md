@@ -10,6 +10,7 @@
 - Guarding: protecting group of screens
 - using Clerk for authentication (according to teacher best way of auth)
 - expo-dev-client: da muss man nicht immer die App rebuilden, wenn man ein neues Package installiert
+- wir verwenden native tabs in diesem Projekt
 
 Video: 1:43
 Link: https://www.youtube.com/watch?v=TuwcMlYAJlA
