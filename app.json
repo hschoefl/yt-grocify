@@ -22,7 +22,7 @@
       "package": "com.anonymous.ytgrocify"
     },
     "web": {
-      "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png",
       "bundler": "metro"
     },
