@@ -13,5 +13,5 @@
 - wir verwenden native tabs in diesem Projekt
 - wir verwenden expo API routes für die Kommunikation mit der API; damit muss man kein separates Backend bauen; zum Testen kann man z.B. dann folgendes Kommando verwenden: curl http://localhost:8081/api/items
 
-Video: 3:11
+Video: 3:31
 Link: https://www.youtube.com/watch?v=TuwcMlYAJlA
